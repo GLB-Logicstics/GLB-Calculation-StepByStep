@@ -1,0 +1,25 @@
+@function s($value) {
+  @return calc($value * var(--s));
+}
+
+$primary: #53b7f5;
+$primary-dark: #1d8fd6;
+$primary-soft: #eaf5fd;
+$primary-line: #5cbef6;
+$circle-border: #b0e3fb;
+$text: #000000;
+$muted: #7f8e96;
+$white: #ffffff;
+$border: #dddddd;
+$border-hover: #9fd5f8;
+$divider: #c2ced6;
+$background: #d9eafb;
+$shadow: 0 s(4) s(24) rgba(40, 90, 150, 0.08);
+
+$font: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+$font-number: 'Montserrat', 'Inter', system-ui, sans-serif;
+
+$tablet: 999px;
+$mobile: 720px;
+$phone: 480px;
+$small: 380px;

@@ -1,0 +1,24 @@
+{
+  "name": "test_task",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "css": "sass app/assets/scss/main.scss app/assets/css/main.css --no-source-map",
+    "css:watch": "sass --watch app/assets/scss/main.scss:app/assets/css/main.css --no-source-map",
+    "dev": "npm run css && nuxt dev",
+    "build": "npm run css && nuxt build",
+    "generate": "npm run css && nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@pinia/nuxt": "^0.11.3",
+    "nuxt": "^4.6.3",
+    "pinia": "^3.0.4",
+    "vue": "^3.5.44",
+    "vue-router": "^5.4.0"
+  },
+  "devDependencies": {
+    "sass": "^1.93.2"
+  }
+}

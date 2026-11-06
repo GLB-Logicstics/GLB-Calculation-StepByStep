@@ -1,0 +1,74 @@
+@use 'variables' as *;
+
+.step-vehicle {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+
+  &__question {
+    margin: 0 0 s(27);
+    font-size: s(26);
+    font-weight: 600;
+  }
+
+  &__types {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: s(11);
+    margin-bottom: s(51);
+  }
+
+  &__items {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: s(10) s(11);
+    padding-right: s(9);
+  }
+
+  @media (max-width: $tablet) {
+    &__question {
+      margin-bottom: 18px;
+      font-size: 22px;
+      line-height: 28px;
+    }
+
+    &__types {
+      margin-bottom: 32px;
+    }
+
+    &__items {
+      overflow: visible;
+      padding-right: 0;
+    }
+  }
+
+  @media (max-width: $mobile) {
+    &__question {
+      margin-bottom: 14px;
+      font-size: 18px;
+      line-height: 24px;
+    }
+
+    &__types {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    &__items {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+  }
+
+  @media (max-width: $small) {
+    &__types,
+    &__items {
+      gap: 6px;
+    }
+  }
+}

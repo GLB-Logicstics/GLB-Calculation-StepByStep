@@ -1,0 +1,161 @@
+@use 'variables' as *;
+
+.bid {
+  display: flex;
+  align-items: center;
+  height: s(88);
+  padding: 0 s(28) 0 s(38);
+  border-radius: s(10);
+  background: $white;
+  box-shadow: inset 0 0 0 1px $border;
+
+  &:focus-within {
+    background: $primary-soft;
+    box-shadow: inset 0 0 0 2px $primary;
+  }
+
+  &__input {
+    flex: 1 1 auto;
+    min-width: 0;
+    height: 100%;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    font-size: s(25);
+
+    &::placeholder {
+      color: $muted;
+    }
+  }
+
+  &__arrows {
+    display: flex;
+    flex-direction: column;
+    gap: s(13);
+    padding-left: s(20);
+    border-left: 1px solid $divider;
+  }
+
+  &__arrow {
+    width: s(21);
+    height: s(14);
+    padding: 0;
+    border: 0;
+    background: none;
+    color: $muted;
+    cursor: pointer;
+
+    &:hover {
+      color: $primary;
+    }
+
+    svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+      fill: currentColor;
+    }
+  }
+
+  @media (max-width: $tablet) {
+    height: 72px;
+    padding: 0 20px 0 24px;
+
+    &__input {
+      font-size: 20px;
+    }
+  }
+
+  @media (max-width: $mobile) {
+    height: 60px;
+    padding: 0 14px 0 16px;
+
+    &__input {
+      font-size: 17px;
+    }
+
+    &__arrows {
+      gap: 10px;
+      padding-left: 14px;
+    }
+
+    &__arrow {
+      width: 18px;
+      height: 12px;
+    }
+  }
+}
+
+.title-types {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: s(7);
+  margin-top: s(22);
+
+  @media (max-width: $tablet) {
+    margin-top: 16px;
+  }
+
+  @media (max-width: $mobile) {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+  }
+}
+
+.title-type {
+  display: flex;
+  align-items: center;
+  gap: s(30);
+  height: s(88);
+  padding: 0 s(20) 0 s(28);
+  border: 0;
+  border-radius: s(10);
+  background: $white;
+  box-shadow: inset 0 0 0 1px $border;
+  font-size: s(23.5);
+  color: $muted;
+  text-align: left;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: inset 0 0 0 1px $border-hover;
+  }
+
+  &.is-selected {
+    background: $primary-soft;
+    box-shadow: inset 0 0 0 2px $primary;
+  }
+
+  &__dot {
+    flex: none;
+    width: s(21);
+    height: s(21);
+    border-radius: 50%;
+    background: $muted;
+  }
+
+  &.is-selected &__dot {
+    background: $primary;
+  }
+
+  @media (max-width: $tablet) {
+    gap: 16px;
+    height: 72px;
+    padding: 0 20px;
+    font-size: 18px;
+  }
+
+  @media (max-width: $mobile) {
+    gap: 12px;
+    height: auto;
+    min-height: 60px;
+    padding: 12px 16px;
+    font-size: 16px;
+    line-height: 20px;
+
+    &__dot {
+      width: 18px;
+      height: 18px;
+    }
+  }
+}

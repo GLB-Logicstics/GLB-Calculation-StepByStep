@@ -1,0 +1,469 @@
+@use 'variables' as *;
+
+.calc {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: s(46) s(40) s(49) s(44);
+  background: radial-gradient(120% 90% at 50% 100%, #f5fafe 0%, #e6f2fd 45%, $background 100%);
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: s(24);
+    margin-bottom: s(23);
+  }
+
+  &__title {
+    margin: 0;
+    font-size: s(55);
+    line-height: s(55);
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  &__body {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: s(306) minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr);
+    gap: s(15);
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: center;
+    margin-top: s(55);
+  }
+
+  @media (max-width: $tablet) {
+    height: auto;
+    min-height: 100vh;
+    padding: 32px 24px;
+
+    &__header {
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    &__title {
+      font-size: 40px;
+      line-height: 48px;
+    }
+
+    &__body {
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: auto;
+      gap: 16px;
+    }
+
+    &__footer {
+      margin-top: 32px;
+    }
+  }
+
+  @media (max-width: $mobile) {
+    padding: 24px 16px;
+
+    &__header {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 16px;
+    }
+
+    &__title {
+      font-size: 30px;
+      line-height: 36px;
+      white-space: normal;
+    }
+
+    &__footer {
+      margin-top: 24px;
+    }
+  }
+
+  @media (max-width: $small) {
+    padding: 20px 12px;
+
+    &__title {
+      font-size: 26px;
+      line-height: 32px;
+    }
+  }
+}
+
+.calc-search {
+  display: flex;
+  gap: s(11);
+
+  &__input {
+    width: s(352);
+    height: s(70);
+    padding: 0 s(24) 0 s(34);
+    border: 0;
+    border-radius: s(17);
+    outline: 0;
+    background: $white;
+    box-shadow: $shadow;
+    font-size: s(24);
+
+    &::placeholder {
+      color: $muted;
+    }
+
+    &:focus {
+      box-shadow: inset 0 0 0 2px $primary;
+    }
+  }
+
+  &__btn {
+    display: grid;
+    place-items: center;
+    width: s(70);
+    height: s(70);
+    padding: 0;
+    border: 0;
+    border-radius: s(17);
+    background: $primary;
+    color: $white;
+    cursor: pointer;
+  }
+
+  @media (max-width: $tablet) {
+    flex: 0 1 433px;
+    min-width: 0;
+
+    &__input {
+      flex: 1 1 auto;
+      width: auto;
+      min-width: 0;
+      height: 56px;
+      padding: 0 20px;
+      border-radius: 14px;
+      font-size: 18px;
+    }
+
+    &__btn {
+      --s: 0.63px;
+      flex: none;
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+    }
+  }
+
+  @media (max-width: $mobile) {
+    flex: none;
+    width: 100%;
+
+    &__input {
+      height: 52px;
+      padding: 0 16px;
+      font-size: 16px;
+    }
+
+    &__btn {
+      --s: 0.58px;
+      width: 52px;
+      height: 52px;
+    }
+  }
+}
+
+.calc-panel {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  padding: s(44) s(41) s(49) s(37);
+  border-radius: s(20);
+  background: $white;
+  box-shadow: $shadow;
+
+  @media (max-width: $tablet) {
+    padding: 32px 28px;
+    border-radius: 16px;
+  }
+
+  @media (max-width: $mobile) {
+    padding: 24px 16px;
+  }
+
+  @media (max-width: $small) {
+    padding: 20px 12px;
+  }
+}
+
+.calc-steps {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0 0 s(12);
+  list-style: none;
+  border-radius: s(20);
+  background: $white;
+  box-shadow: $shadow;
+
+  @media (max-width: $tablet) {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+    padding: 8px;
+    border-radius: 16px;
+  }
+
+  @media (max-width: $mobile) {
+    gap: 4px;
+    padding: 6px;
+  }
+}
+
+.calc-step {
+  position: relative;
+  flex: 1 1 0;
+
+  &:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: s(106);
+    left: s(56);
+    width: 1px;
+    height: calc(100% - #{s(56)});
+    background: repeating-linear-gradient(to bottom, $primary-line 0 s(4), transparent s(4) s(7));
+  }
+
+  &__btn {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: 0;
+    border-radius: s(20);
+    background: transparent;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  &__btn:hover &__title {
+    color: $primary-dark;
+  }
+
+  &__bar {
+    position: absolute;
+    top: s(48);
+    left: s(10);
+    width: s(8);
+    height: s(134);
+    border-radius: s(4);
+    background: $primary;
+    opacity: 0;
+  }
+
+  &__num {
+    position: absolute;
+    z-index: 1;
+    top: s(50);
+    left: s(29);
+    display: grid;
+    place-items: center;
+    width: s(56);
+    height: s(56);
+    border-radius: 50%;
+    background: $white;
+    box-shadow: inset 0 0 0 1px $circle-border;
+    font-family: $font-number;
+    font-size: s(18);
+    font-weight: 800;
+  }
+
+  &__icon {
+    position: absolute;
+    top: s(50);
+    left: s(107);
+    color: $primary;
+  }
+
+  &__title {
+    position: absolute;
+    top: s(117);
+    left: s(108);
+    font-size: s(18);
+    font-weight: 700;
+  }
+
+  &__subtitle {
+    position: absolute;
+    top: s(142);
+    left: s(108);
+    font-size: s(14);
+    color: $muted;
+  }
+
+  &.is-active &__btn {
+    background: linear-gradient(135deg, #f0f7fe 0%, #e2effc 100%);
+  }
+
+  &.is-active &__bar {
+    opacity: 1;
+  }
+
+  &.is-active &__num {
+    background: $primary;
+    box-shadow: none;
+    color: $white;
+  }
+
+  &.is-done &__num {
+    box-shadow: inset 0 0 0 1.5px $primary;
+    color: $primary;
+  }
+
+  @media (max-width: $tablet) {
+    min-width: 0;
+
+    &:not(:last-child)::after,
+    &__bar,
+    &__icon {
+      display: none;
+    }
+
+    &__btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      padding: 14px 8px;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    &__num {
+      position: static;
+      width: 44px;
+      height: 44px;
+      margin-bottom: 4px;
+      font-size: 15px;
+    }
+
+    &__title,
+    &__subtitle {
+      position: static;
+      max-width: 100%;
+    }
+
+    &__title {
+      font-size: 16px;
+      line-height: 20px;
+    }
+
+    &__subtitle {
+      font-size: 13px;
+      line-height: 17px;
+    }
+  }
+
+  @media (max-width: $mobile) {
+    &__btn {
+      gap: 0;
+      padding: 10px 4px;
+      border-radius: 10px;
+    }
+
+    &__num {
+      width: 38px;
+      height: 38px;
+      margin-bottom: 6px;
+      font-size: 14px;
+    }
+
+    &__title {
+      font-size: 13px;
+      line-height: 16px;
+    }
+
+    &__subtitle {
+      display: none;
+    }
+  }
+
+  @media (max-width: $small) {
+    &__num {
+      width: 34px;
+      height: 34px;
+      font-size: 13px;
+    }
+
+    &__title {
+      font-size: 12px;
+      line-height: 15px;
+    }
+  }
+}
+
+.calc-nav {
+  display: flex;
+  gap: 20px;
+
+  &__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: s(49);
+    min-width: s(305);
+    height: s(73);
+    padding: 0 s(43) 0 s(65);
+    border: 0;
+    border-radius: s(4);
+    background: $primary;
+    color: $white;
+    font-size: s(26);
+    font-weight: 600;
+    cursor: pointer;
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  @media (max-width: $tablet) {
+    &__btn {
+      --s: 0.85px;
+      min-width: 220px;
+      height: 60px;
+      gap: 24px;
+      padding: 0 28px;
+      border-radius: 4px;
+      font-size: 20px;
+    }
+  }
+
+  @media (max-width: $mobile) {
+    width: 100%;
+    gap: 12px;
+
+    &__btn {
+      --s: 0.7px;
+      flex: 1 1 0;
+      min-width: 0;
+      height: 54px;
+      gap: 12px;
+      padding: 0 12px;
+      font-size: 17px;
+      white-space: nowrap;
+    }
+  }
+
+  @media (max-width: $small) {
+    gap: 8px;
+
+    &__btn {
+      height: 50px;
+      gap: 8px;
+      font-size: 15px;
+    }
+  }
+}

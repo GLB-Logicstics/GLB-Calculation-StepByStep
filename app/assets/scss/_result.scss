@@ -1,0 +1,259 @@
+@use 'variables' as *;
+
+.result {
+  min-height: 100vh;
+  padding: s(29) s(24) s(57);
+  background: radial-gradient(120% 90% at 50% 100%, #f5fafe 0%, #e6f2fd 45%, $background 100%);
+
+  &__card {
+    padding: s(32) s(44) s(38) s(50);
+    border-radius: s(20);
+    background: $white;
+    box-shadow: $shadow;
+  }
+
+  &__hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: s(24);
+    height: s(360);
+    margin-top: s(32);
+    padding: 0 s(43) 0 s(52);
+    border-radius: s(16);
+    background: linear-gradient(160deg, #f1f8fe 0%, #e2effc 100%);
+    box-shadow: $shadow;
+  }
+
+  &__total-label {
+    margin: 0;
+    font-size: s(25);
+    font-weight: 600;
+  }
+
+  &__total {
+    margin: s(28) 0 0;
+    font-size: s(96);
+    line-height: 1;
+    font-weight: 900;
+    color: $primary;
+    white-space: nowrap;
+  }
+
+  &__image {
+    width: s(620);
+    max-width: 55%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  &__info {
+    margin-top: s(26);
+    padding: s(42) s(51) s(40) s(44);
+    border-radius: s(16);
+    box-shadow: $shadow;
+  }
+
+  &__info-title {
+    margin: 0 0 s(31);
+    font-size: s(25);
+    font-weight: 600;
+  }
+
+  &__section {
+    display: flex;
+    align-items: flex-start;
+    gap: s(28);
+  }
+
+  &__section + &__section {
+    margin-top: s(27);
+    padding-top: s(31);
+    border-top: 1px solid #a9b4b9;
+  }
+
+  &__num {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: s(56);
+    height: s(56);
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 1px $circle-border;
+    font-family: $font-number;
+    font-size: s(18);
+    font-weight: 800;
+    color: $primary;
+  }
+
+  &__section-title {
+    margin: 0;
+    font-size: s(18);
+    font-weight: 700;
+  }
+
+  &__cols {
+    display: flex;
+    flex-wrap: wrap;
+    margin: s(4) 0 0;
+  }
+
+  &__col {
+    padding: 0 s(14);
+    border-left: 1px solid $divider;
+    font-size: s(14);
+
+    &:first-child {
+      padding-left: 0;
+      border-left: 0;
+    }
+
+    dt {
+      color: $muted;
+    }
+
+    dd {
+      margin: s(5) 0 0;
+      white-space: nowrap;
+    }
+  }
+
+  @media (max-width: $tablet) {
+    padding: 24px;
+
+    &__card {
+      padding: 28px 24px;
+      border-radius: 16px;
+    }
+
+    &__hero {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+      height: auto;
+      margin-top: 24px;
+      padding: 24px;
+    }
+
+    &__total-label {
+      font-size: 20px;
+      line-height: 26px;
+    }
+
+    &__total {
+      margin-top: 12px;
+      font-size: min(56px, 8vw);
+      white-space: normal;
+    }
+
+    &__image {
+      align-self: center;
+      width: 100%;
+      max-width: 520px;
+      max-height: none;
+      height: auto;
+    }
+
+    &__info {
+      margin-top: 20px;
+      padding: 24px 20px;
+    }
+
+    &__info-title {
+      margin-bottom: 20px;
+      font-size: 20px;
+    }
+
+    &__section > div {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
+    &__cols {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px 12px;
+      margin-top: 8px;
+    }
+
+    &__col,
+    &__col:first-child {
+      padding: 0;
+      border-left: 0;
+    }
+
+    &__col dd {
+      white-space: normal;
+      overflow-wrap: anywhere;
+    }
+  }
+
+  @media (max-width: $mobile) {
+    padding: 16px;
+
+    &__card {
+      padding: 20px 16px;
+    }
+
+    &__hero {
+      padding: 20px 16px;
+      border-radius: 12px;
+    }
+
+    &__total-label {
+      font-size: 17px;
+      line-height: 22px;
+    }
+
+    &__info {
+      padding: 20px 16px;
+      border-radius: 12px;
+    }
+
+    &__info-title {
+      font-size: 18px;
+    }
+
+    &__section {
+      gap: 12px;
+    }
+
+    &__section + &__section {
+      margin-top: 20px;
+      padding-top: 20px;
+    }
+
+    &__num {
+      width: 40px;
+      height: 40px;
+      font-size: 15px;
+    }
+
+    &__cols {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: $small) {
+    padding: 12px;
+
+    &__card {
+      padding: 18px 12px;
+    }
+
+    &__hero,
+    &__info {
+      padding: 16px 12px;
+    }
+
+    &__num {
+      width: 34px;
+      height: 34px;
+      font-size: 13px;
+    }
+
+    &__cols {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+}

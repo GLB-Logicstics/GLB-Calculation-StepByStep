@@ -1,0 +1,147 @@
+@use 'variables' as *;
+
+.option-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: s(216);
+  padding: s(26) s(12) s(17);
+  border: 0;
+  border-radius: s(10);
+  background: $white;
+  box-shadow: inset 0 0 0 1px $border;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: inset 0 0 0 1px $border-hover;
+  }
+
+  &.is-selected {
+    background: $primary-soft;
+    box-shadow: inset 0 0 0 2px $primary;
+  }
+
+  &__check {
+    position: absolute;
+    top: s(14);
+    right: s(14);
+    color: $primary;
+  }
+
+  &__media {
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 0;
+    margin-bottom: s(19);
+  }
+
+  &__img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  &__label {
+    font-size: s(18);
+    font-weight: 700;
+  }
+
+  &--big {
+    justify-content: flex-end;
+    height: s(192);
+    padding: 0 s(12) s(26);
+  }
+
+  &--big &__media {
+    flex: none;
+    height: s(104);
+    align-items: flex-end;
+    margin-bottom: s(5);
+  }
+
+  @media (max-width: $tablet) {
+    &__check {
+      --s: 0.8px;
+      top: 10px;
+      right: 10px;
+    }
+  }
+
+  @media (max-width: $mobile) {
+    --s: 0.8px;
+    height: 170px;
+    padding: 16px 10px 14px;
+    border-radius: 10px;
+
+    &__media {
+      margin-bottom: 10px;
+    }
+
+    &__label {
+      font-size: 15px;
+      line-height: 19px;
+    }
+
+    &--big {
+      --s: 0.55px;
+      height: 128px;
+      padding: 0 6px 12px;
+    }
+
+    &--big &__media {
+      height: 64px;
+      margin-bottom: 8px;
+    }
+
+    &--big &__label {
+      font-size: 13px;
+      line-height: 16px;
+    }
+
+    &--big &__check {
+      --s: 0.6px;
+      top: 7px;
+      right: 7px;
+    }
+  }
+
+  @media (max-width: $phone) {
+    height: 140px;
+    padding: 12px 8px;
+
+    &__label {
+      font-size: 14px;
+      line-height: 18px;
+    }
+
+    &--big {
+      height: 116px;
+      padding: 0 4px 10px;
+    }
+
+    &--big &__media {
+      height: 56px;
+    }
+  }
+
+  @media (max-width: $small) {
+    &--big {
+      --s: 0.45px;
+      height: 104px;
+    }
+
+    &--big &__media {
+      height: 48px;
+    }
+
+    &--big &__label {
+      font-size: 12px;
+      line-height: 15px;
+    }
+  }
+}
