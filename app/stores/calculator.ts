@@ -46,7 +46,11 @@ export const useCalculatorStore = defineStore('calculator', {
 
     auctionHint(): string {
       const auction = useAuctionStore()
-      return 'Buyer fee ' + money(auction.buyerFee) + ' + Live bid ' + money(auction.liveBidFee) + ' + Gate ' + money(auction.gateFee)
+      return 'Buyer fee ' + money(auction.buyerFee) +
+          ' + Live bid ' + money(auction.liveBidFee) +
+          ' + Gate ' + money(auction.gateFee) +
+          ' + Title shipping (FedEx) ' + money(auction.titleShippingFee) +
+          ' + Environmental ' + money(auction.environmentalFee)
     },
 
     customsHint(): string {

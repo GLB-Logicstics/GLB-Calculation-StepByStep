@@ -1,7 +1,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { mapStores } from 'pinia'
-import { money } from '~/utils/helpers'
+import { money, azn } from '~/utils/helpers'
 import { useVehicleStore } from '~/stores/vehicle'
 import { useShippingStore } from '~/stores/shipping'
 import { useAuctionStore } from '~/stores/auction'
@@ -15,6 +15,7 @@ export default defineComponent({
 
   methods: {
     money: money,
+    azn: azn,
   },
 })
 </script>
@@ -101,7 +102,7 @@ export default defineComponent({
               </div>
               <div class="result__col">
                 <dt>Customs cost</dt>
-                <dd :title="calculatorStore.customsHint">{{ money(customsStore.total) }}</dd>
+                <dd :title="calculatorStore.customsHint">{{ money(customsStore.total) }} = {{ azn(customsStore.totalAzn) }}</dd>
               </div>
             </dl>
           </div>

@@ -114,8 +114,22 @@ export const useAuctionStore = defineStore('auction', {
       return this.feeSet.gate
     },
 
+    titleShippingFee(): number {
+      if (this.bid === 0) {
+        return 0
+      }
+      return 20
+    },
+
+    environmentalFee(): number {
+      if (this.bid === 0) {
+        return 0
+      }
+      return 15
+    },
+
     fee(): number {
-      return this.buyerFee + this.liveBidFee + this.gateFee
+      return this.buyerFee + this.liveBidFee + this.gateFee + this.titleShippingFee + this.environmentalFee
     },
 
     isValid(): boolean {

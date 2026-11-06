@@ -6,6 +6,10 @@ export function money(value: number): string {
   return value.toLocaleString('en-US', { maximumFractionDigits: 2 }) + '$'
 }
 
+export function azn(value: number): string {
+  return value.toLocaleString('en-US', { maximumFractionDigits: 2 }) + ' AZN'
+}
+
 export function readNumber(event: Event): number {
   const input = event.target as HTMLInputElement
   const digits = input.value.replace(/\D/g, '').slice(0, 9)
